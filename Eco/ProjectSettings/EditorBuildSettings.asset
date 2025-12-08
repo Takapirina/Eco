@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/CombactSystem.unity
+    guid: 344fb184f50ba4809ab656bce92ca19d
   m_configObjects: {}
