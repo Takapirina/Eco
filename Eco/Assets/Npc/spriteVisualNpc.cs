@@ -25,7 +25,7 @@ public class spriteVisualNpc : MonoBehaviour
         }
     }
 
-        private void Update()
+    private void Update()
     {
         if (npcController.npcData.npcSprite.Length == 0) return;
 

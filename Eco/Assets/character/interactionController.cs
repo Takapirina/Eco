@@ -55,7 +55,7 @@ public class InteractionController : MonoBehaviour
         dialogIndex = 0;
 
         dialogPanel.SetActive(true);
-        nameText.text = currentNPC.npcData.npcName;
+        nameText.text = currentNPC.npcData.npcName + " : ";
         dialogText.text = currentNPC.npcData.dialogueLines[dialogIndex];
         GetComponentInParent<PlayerMovement>().freeze = true;
         transform.parent.GetComponentInChildren<SpriteVisual>().setSpriteAnimState(SpriteAnimState.Idle);

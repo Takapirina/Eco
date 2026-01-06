@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a4d6eae410b4b798d2bda762966886, type: 3}
+  m_Name: Shroomish
+  m_EditorClassIdentifier: 
+  pk_name: Shroomish
+  pokedex_description: "Quando fiuta il pericolo, si difende spargendo spore tossiche
+    dalla sommit\xE0 del capo."
+  pokedex_number: 5
+  height: 40
+  weight: 5
+  type_1: 6
+  type_2: 0
+  sprites:
+  - {fileID: 21300000, guid: 90b1839c5990644c6977a821550b7695, type: 3}
+  - {fileID: 21300000, guid: 0f89b83e613af44fba3e34f8a2ba19ad, type: 3}
+  - {fileID: 21300000, guid: aa3408dd4e9314a95809d78dcba0bbb0, type: 3}
+  - {fileID: 21300000, guid: e6bbd2ccb48d848bd83bb1bc181970a0, type: 3}
+  - {fileID: 21300000, guid: 92ab6efd007384e89ad331adf7708122, type: 3}
+  - {fileID: 21300000, guid: 9e941f50de4134a3db9fcc87be7f00ac, type: 3}
+  - {fileID: 21300000, guid: 58f55f66d13da42c08ec9aee8d06c20d, type: 3}
+  - {fileID: 21300000, guid: c576ca7db605949c4abf2da97549e6ef, type: 3}
+  - {fileID: 21300000, guid: 1dedf9e750bc24125bc4daa5009fe807, type: 3}
+  - {fileID: 21300000, guid: b0e6af050cb604544b080ca2c4e2510f, type: 3}
+  - {fileID: 21300000, guid: 77351c63659e5424ead12127552442c6, type: 3}
+  - {fileID: 21300000, guid: 9fd27115c16cf41b0bae80e4eeeac33f, type: 3}
+  - {fileID: 21300000, guid: 4645c14d9f73248c385481c6589e9ed9, type: 3}
+  - {fileID: 21300000, guid: 10c97139305be4ab69713bee9a91fbb6, type: 3}
+  - {fileID: 21300000, guid: 1041ffc6dc65149918a5f62339a5025a, type: 3}
+  - {fileID: 21300000, guid: e4c6bc77a44a84fa6b248c6746ab3b04, type: 3}
+  - {fileID: 21300000, guid: 72ef3999310af49299a5a14cbd7850ab, type: 3}
+  - {fileID: 21300000, guid: f602e34a932394b26baf2ce631f6954f, type: 3}
+  - {fileID: 21300000, guid: 23d6bee7b6122447f8f355b818582fd6, type: 3}
+  - {fileID: 21300000, guid: a34bd396133d3473583e6dedf8c9d61e, type: 3}
+  - {fileID: 21300000, guid: 4de2b1d677da847f3bab4aa3aea21a0d, type: 3}
+  - {fileID: 21300000, guid: 81c3d6e727f0848ad8140ec094894ad6, type: 3}
+  - {fileID: 21300000, guid: 1fd8e158052ea424eb1ae0c16c58bd66, type: 3}
+  - {fileID: 21300000, guid: 08eff8e6110964c1cb7a6b9a3747e313, type: 3}
+  - {fileID: 21300000, guid: 3847d30bedc1f44bfad60c1ce7c34497, type: 3}
+  - {fileID: 21300000, guid: 1d37c5a1d0b1a48d9b83ab155f74795e, type: 3}
+  - {fileID: 21300000, guid: 2caa84f0fda674469840cf64a95f765c, type: 3}
+  - {fileID: 21300000, guid: c73d8872da032462bb2a720e0f6e1976, type: 3}
+  - {fileID: 21300000, guid: 0bf5d2bfc5c6345a3ae6123ceb506f8a, type: 3}
+  - {fileID: 21300000, guid: 9e315b169f3b640c6976c578bffd3cc0, type: 3}
+  - {fileID: 21300000, guid: 0c47e2af6d22d4aeb9df696147fd158b, type: 3}
+  - {fileID: 21300000, guid: b95e9059857734315be9bf2311ed61be, type: 3}
+  - {fileID: 21300000, guid: 5e9816e78f8b64d2dbee354138b1edb7, type: 3}
+  - {fileID: 21300000, guid: 5a73b9b9d9b9e460c836925f3b377a2c, type: 3}
+  - {fileID: 21300000, guid: a40ba87828761464e9f25fd2fbf0f2a5, type: 3}
+  - {fileID: 21300000, guid: 27a605251424847f18dc12465f8287f7, type: 3}
+  - {fileID: 21300000, guid: f276f755c698a490a8dba13109cebd6e, type: 3}
+  - {fileID: 21300000, guid: 14c09c351e880404dadbd2a0974a2bfa, type: 3}
+  - {fileID: 21300000, guid: 4f354694c340f4999905aed69d3a1ec3, type: 3}
+  - {fileID: 21300000, guid: 937e7e29603654c59b8ecb5fd8e762cb, type: 3}
+  - {fileID: 21300000, guid: fc9da62693cde47e083e1f71daeb54d2, type: 3}
+  - {fileID: 21300000, guid: 09fcc6176519a48bca23fadd037e882b, type: 3}
+  - {fileID: 21300000, guid: e43e7d98cddc74b37a1417cd1a3e0f83, type: 3}
+  - {fileID: 21300000, guid: 82acbec530cc640308dc78425617c74d, type: 3}
+  - {fileID: 21300000, guid: f2c8c705b25384c268e0c9670c9b8316, type: 3}
+  - {fileID: 21300000, guid: 7431fca6da2bc445cbfd57c2544257a5, type: 3}
+  - {fileID: 21300000, guid: ae96fe6853a504c1a9a3fe6d88a3b77f, type: 3}
+  - {fileID: 21300000, guid: 3eaac90c748cb446a83ed6bfbd21208e, type: 3}
+  - {fileID: 21300000, guid: d0e8dac1904c24a15af5b899a2a3a85a, type: 3}
+  - {fileID: 21300000, guid: 0d6c3836d7a4c481aba1599592a6bc0e, type: 3}
+  - {fileID: 21300000, guid: a675212dc360a4210879b7a8fda5534d, type: 3}
+  - {fileID: 21300000, guid: f2175725ee6e14840b5e9e4b4e80e303, type: 3}
+  - {fileID: 21300000, guid: 315fbbb64041e4139a1f35424b9229bd, type: 3}
+  sprites_shiny:
+  - {fileID: 21300000, guid: 11b1736546c44408ea985564783484bb, type: 3}
+  base_hp: 60
+  base_attack: 40
+  base_defense: 60
+  base_sp_attack: 40
+  base_sp_defense: 60
+  base_speed: 35
+  base_mana: 5
+  is_asexual: 0
+  male_percentage: 50
+  exp_yeld: 59
+  level_grow: 0
+  catch_rate: 255
+  learnable_moves:
+  - move: {fileID: 11400000, guid: cece8e1ffc34e447ba40618a3ed62d6d, type: 2}
+    learnMethod: 0
+    level: 1
