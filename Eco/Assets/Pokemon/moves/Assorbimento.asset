@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1e24f67620be49fd9a2444f144ad958, type: 3}
+  m_Name: Assorbimento
+  m_EditorClassIdentifier: 
+  move_name: Assorbimento
+  move_type: 6
+  move_category: 1
+  move_description: "Il Pok\xE9mon attacca assorbendo sostanze nutritive e recupera
+    una quantit\xE0 di PS pari alla met\xE0 del danno inflitto."
+  potenza: 20
+  targetsType: 0
+  precisione: 100
+  manaCost: 10
+  priority: 0
+  effettiVisivi:
+  - vfxPrefab: {fileID: 3184742708468681496, guid: fd24f0acec85f4a2898d145634715ce4, type: 3}
+    anchor: 1
+    spawnPos: 1
+    motion: 2
+    render: 0
+    delay: 0
+    duration: 1.5
+  secondaryEffects:
+  - type: 0
+    pokemonTarget: 0
+    applyChache: 100
+    applicationMoment: 1
+    changerListStatistic: []
+    status: 0
+    damagePercentage: 0.5

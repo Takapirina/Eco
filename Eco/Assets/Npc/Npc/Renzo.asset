@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Renzo
   m_EditorClassIdentifier: 
   npcName: Renzo
-  npcSprite:
+  NPCRole: 0
+  down: []
+  up:
   - {fileID: 21300000, guid: 9b0cb9359721f456a8672a6e66204c5a, type: 3}
+  left: []
+  right: []
   frameRate: 4
   dialogueLines:
   - Sono un npc

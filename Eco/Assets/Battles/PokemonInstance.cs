@@ -8,9 +8,9 @@ public class PokemonInstance
     // --- Core ---
     public PokemonBase BaseData { get; private set; }
     public int Level { get; private set; }
+    public Guid id { get; private set; }
 
     public bool IsShiny { get; private set; }
-    public Status Status { get; private set; } = Status.None;
 
     // --- Stats calcolate ---
     public int MaxHP { get; private set; }
@@ -22,11 +22,25 @@ public class PokemonInstance
 
     public int MaxMana { get; private set; }
 
+    public int attLv;       //[-6 to +6]
+    public int deffLv;      //[-6 to +6]
+    public int spAttLv;     //[-6 to +6]
+    public int spDeffLv;    //[-6 to +6]
+    public int speedLv;     //[-6 to +6]
+
+    public int critLv;      //[0 to +3]
+
+
     // --- Runtime ---
-    public int CurrentHP { get; private set; }
-    public int CurrentMana { get; private set; }
+    public int CurrentHP { get; set; }
+    public int CurrentMana { get; set; }
 
     public bool IsFainted => CurrentHP <= 0;
+
+    // --- State Animation ---
+    public VisualPose visualPose;
+    public UnitStatusVisual statusVisual;
+    public Status status = Status.None;
 
     // --- Moves (importante: copia difensiva) ---
     private readonly List<Move_base> _moves = new List<Move_base>();
@@ -36,6 +50,8 @@ public class PokemonInstance
     {
         if (pokemonBase == null) throw new ArgumentNullException(nameof(pokemonBase));
         if (level < 1) level = 1;
+
+        id = Guid.NewGuid();
 
         BaseData = pokemonBase;
         Level = level;
@@ -112,21 +128,73 @@ public class PokemonInstance
         CurrentMana = Mathf.Min(MaxMana, CurrentMana + amount);
     }
 
-    // --- Status ---
-    public void ApplyStatus(Status newStatus) => Status = newStatus;
-    public void CureStatus() => Status = Status.None;
+    // --- stats ---
+    public void boostStats(Statistica stat, int lv)
+    {
+        switch (stat)
+        {
+            case Statistica.att:
+                attLv = Mathf.Min(6, attLv + lv);
+            break;
+            case Statistica.deff:
+                deffLv = Mathf.Min(6, deffLv + lv);
+            break;
+            case Statistica.spAtt:
+                spAttLv = Math.Min(6, spAttLv + lv);
+            break;
+            case Statistica.spDeff:
+                spDeffLv = Math.Min(6, spDeffLv + lv);
+            break;
+            case Statistica.speed:
+                speedLv = Math.Min(6, speedLv + lv);
+            break;
+            case Statistica.crit:
+                critLv = Math.Min(3, critLv + lv);
+            break;
+        }
+    }
+
+    public void debufStats(Statistica stat, int lv)
+    {
+        switch (stat)
+        {
+            case Statistica.att:
+                attLv = Mathf.Max(-6, attLv + lv);
+            break;
+            case Statistica.deff:
+                deffLv = Mathf.Max(-6, deffLv + lv);
+            break;
+            case Statistica.spAtt:
+                spAttLv = Math.Max(-6, spAttLv + lv);
+            break;
+            case Statistica.spDeff:
+                spDeffLv = Math.Max(-6, spDeffLv + lv);
+            break;
+            case Statistica.speed:
+                speedLv = Math.Max(-6, speedLv + lv);
+            break;
+            case Statistica.crit:
+                critLv = Math.Max(-3, critLv + lv);
+            break;
+        }
+    }
+
+    public void removeStatus()
+    {
+        status = Status.None;
+    }
 
     // --- Utility ---
     public void RestoreFull()
     {
         CurrentHP = MaxHP;
         CurrentMana = MaxMana;
-        Status = Status.None;
+        removeStatus();
     }
 
     public void DebugInfo()
     {
-        Debug.Log($"Pokemon: {BaseData.pk_name} | Lv: {Level} | HP: {CurrentHP}/{MaxHP} | Mana: {CurrentMana}/{MaxMana} | Status: {Status} | Shiny: {IsShiny}");
+        Debug.Log($"Pokemon: {BaseData.pk_name} | Lv: {Level} | HP: {CurrentHP}/{MaxHP} | Mana: {CurrentMana}/{MaxMana} | Status: {status} | Shiny: {IsShiny}");
 
         for (int i = 0; i < _moves.Count; i++)
         {
@@ -138,10 +206,21 @@ public class PokemonInstance
 public enum Status
 {
     None,
+    removeNegativeStatus,
     Poison,
     Burn,
     Freeze,
     Sleep,
     Paralyze,
     Confusion
+}
+
+public enum Statistica
+{
+    att,
+    deff,
+    spAtt,
+    spDeff,
+    speed,
+    crit
 }

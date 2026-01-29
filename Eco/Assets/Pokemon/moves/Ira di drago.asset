@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1e24f67620be49fd9a2444f144ad958, type: 3}
+  m_Name: Ira di drago
+  m_EditorClassIdentifier: 
+  move_name: Ira di drago
+  move_id: 100
+  move_type: 14
+  move_category: 1
+  move_description: "Ira di Drago infligge danno sottraendo sempre 40 PS al bersaglio.
+    Ira di Drago non tiene conto delle debolezze o resistenze del tipo del Pok\xE9mon
+    avversario, risultando sempre normalmente efficace. Non ignora l'immunit\xE0
+    di tipo."
+  potenza: 0
+  targetsType: 0
+  precisione: 100
+  manaCost: 15
+  priority: 0
+  effettiVisivi: []
+  secondaryEffects: []

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3903fadb74faa4e528f21630fae9814b, type: 3}
+  m_Name: Axew
+  m_EditorClassIdentifier: 
+  npcName: Axew
+  NPCRole: 0
+  down:
+  - {fileID: 21300000, guid: 84ae833cce518481990db1bde29f876e, type: 3}
+  - {fileID: 21300000, guid: a7959f1e59e164a10967f9987a8ab619, type: 3}
+  - {fileID: 21300000, guid: 84ae833cce518481990db1bde29f876e, type: 3}
+  - {fileID: 21300000, guid: b30f17470d2be4068a701b950cec7809, type: 3}
+  up:
+  - {fileID: 21300000, guid: 517afae1dd90e490cb8da61b65b659e4, type: 3}
+  - {fileID: 21300000, guid: c8ec848a39a5448a499b3b6462b16b20, type: 3}
+  - {fileID: 21300000, guid: 517afae1dd90e490cb8da61b65b659e4, type: 3}
+  - {fileID: 21300000, guid: 59f1737d4817a41abb025ea35ea30582, type: 3}
+  left:
+  - {fileID: 21300000, guid: c6ecc9da29bf343859d4c0e0db9c8292, type: 3}
+  - {fileID: 21300000, guid: f481febf0ae9a4343b2e8377946051d0, type: 3}
+  right:
+  - {fileID: 21300000, guid: 93d79ddd32a834f329962a4c5d098779, type: 3}
+  - {fileID: 21300000, guid: 25ff88b2390ae40fe80cd838a96d9465, type: 3}
+  frameRate: 4
+  dialogueLines: []
+  isInteractable: 0

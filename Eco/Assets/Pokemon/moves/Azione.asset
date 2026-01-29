@@ -20,5 +20,5 @@ MonoBehaviour:
   potenza: 40
   targetsType: 1
   precisione: 100
-  manaCost: 0
+  manaCost: 10
   priority: 0

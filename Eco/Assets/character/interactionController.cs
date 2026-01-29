@@ -47,6 +47,10 @@ public class InteractionController : MonoBehaviour
             {
                 NextLine();
             }
+
+            if (currentNPC.npcData.NPCRole == NPCRole.Nurse) NpcAction.ExecuteHeal(PartyContext.I.Party);
+            //execute events like heal or gift something
+
         }
     }
 

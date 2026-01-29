@@ -13,9 +13,16 @@ MonoBehaviour:
   m_Name: ledyba
   m_EditorClassIdentifier: 
   npcName: Ledyba
-  npcSprite:
+  NPCRole: 0
+  down:
+  - {fileID: 21300000, guid: 11b1736546c44408ea985564783484bb, type: 3}
+  up:
   - {fileID: 21300000, guid: 7ac493a976a254f1d92a1b1e0aa53b65, type: 3}
   - {fileID: 21300000, guid: ba3f7a87ea51b4502888daf45e156fdb, type: 3}
+  left:
+  - {fileID: 21300000, guid: db3e13518d58946009cdc26d2e9ff33d, type: 3}
+  - {fileID: 21300000, guid: 303782ed3b145447cb8f81b8e6c4d202, type: 3}
+  right: []
   frameRate: 4
   dialogueLines: []
   isInteractable: 0

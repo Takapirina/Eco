@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Lucia
   m_EditorClassIdentifier: 
   npcName: Lucia
-  npcSprite:
+  NPCRole: 0
+  down: []
+  up:
   - {fileID: 21300000, guid: 3f840f85973504ef8821cc3d18eeeaae, type: 3}
+  left: []
+  right: []
   frameRate: 4
   dialogueLines:
   - Ciao, Sono il primo Npc di questa regno vuoto e desolato.

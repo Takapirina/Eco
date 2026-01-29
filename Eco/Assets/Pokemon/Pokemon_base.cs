@@ -22,6 +22,13 @@ public class PokemonBase : ScriptableObject
 
     public Sprite[] sprites;
     public Sprite[] sprites_shiny;
+    public Sprite portrait;
+    public Sprite portrait_shiny;
+
+    public bool isFly;
+
+
+    public GameObject vfxEnter;
 
     // base stats
     public int base_hp;
@@ -44,9 +51,6 @@ public class PokemonBase : ScriptableObject
     public List<LearnableMove> learnable_moves;
 
     // abilities
-
-
-
 
 }
 

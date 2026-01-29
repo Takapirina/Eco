@@ -22,3 +22,14 @@ MonoBehaviour:
   precisione: 100
   manaCost: 0
   priority: 0
+  effettiVisivi: []
+  secondaryEffects:
+  - type: 4
+    pokemonTarget: 1
+    applyChache: 100
+    applicationMoment: 1
+    changerListStatistic:
+    - statistica: 1
+      livello: 1
+    status: 0
+    damagePercentage: 0

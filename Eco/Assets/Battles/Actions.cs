@@ -6,14 +6,16 @@
  - run (esci dallo scontro)
 */
 
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // NB: NON chiamarla Action (confligge con System.Action). Meglio BattleAction.
 public abstract class BattleAction
 {
-    public abstract void Execute();
+    public abstract IEnumerator Execute();
 }
 
 /** classe che indica l'azione di attaccare e usare una mossa*/
@@ -30,9 +32,31 @@ public class AttackAction : BattleAction
         this.targets = targets;
     }
 
-    public override void Execute()
+    public override IEnumerator Execute()
     {
-        Debug.Log($"{pkUsers.Instance.BaseData.pk_name} usa {move.move_name} contro {targets.Count} target(s)");
+        int totDamage = 0;
+        if (!pkUsers.Instance.UseMana(move.manaCost))
+            yield break;
+
+        BattleUtilitis.applyEffectsBymoment(pkUsers, targets, move, totDamage, ApplicationMoment.before);
+
+        foreach (BattleUnit target in targets)
+        {
+            if (move.effettiVisivi != null && target.View != null)
+            {
+                battleVFX.playAnimation(pkUsers, move, target);
+            }
+            // Logica (danno)
+            int damage = BattleUtilitis.calculateDmg(pkUsers.Instance, target.Instance, move);
+            totDamage += damage;
+            target.Instance.TakeDamage(damage);
+        }
+
+        yield return new WaitForSeconds(battleVFX.calculateTime(move));
+
+        BattleUtilitis.applyEffectsBymoment(pkUsers, targets, move, totDamage, ApplicationMoment.after);
+
+        yield return new WaitForSeconds(BattleUtilitis.timeDurationEffetc);
     }
 }
 
@@ -49,18 +73,20 @@ public class DefendAction : BattleAction
         this.pkusers = pk;
     }
 
-    public override void Execute()
+    public override IEnumerator Execute()
     {
         Debug.Log($"Pokemon: {pkusers.Instance.BaseData.pk_name} si difende, le sue statistiche di difesa aumentano");
+        yield return new WaitForSeconds(0);
     }
 }
 
 /** classe che indica l'azione di usare uno strumento dell'inventario*/
 public class ItemsAction : BattleAction
 {
-    public override void Execute()
+    public override IEnumerator Execute()
     {
         Debug.Log("DA Implementare, Usato Strumento");
+        yield return new WaitForSeconds(0);
     }
 }
 
@@ -73,8 +99,9 @@ public class RunAction : BattleAction
         - implementare in futuro un context globale per recuperare ultima scena e la posizione
     */
 
-    public override void Execute()
+    public override IEnumerator Execute()
     {
         SceneManager.LoadScene("SampleScene");
+        yield return new WaitForSeconds(0.5f);
     }
 }

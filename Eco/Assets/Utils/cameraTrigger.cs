@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using UnityEngine;
 
 public class CameraAreaTrigger : MonoBehaviour
@@ -6,41 +6,36 @@ public class CameraAreaTrigger : MonoBehaviour
     [Header("Riferimento alla camera")]
     [SerializeField] private CameraFollow cameraFollow;
 
-    [Header("Impostazioni dentro l'area")]
+    [Header("Impostazioni di questa area")]
     [SerializeField] private Vector3 areaOffset = new Vector3(0, 10, -8);
     [SerializeField] private Vector3 areaRotationEuler = new Vector3(45, 0, 0);
-    [SerializeField] private float smoothTime = 0.025f;
 
-    private Vector3 _originalOffset;
-    private Quaternion _originalRotation;
-    private bool _hasOriginalStored = false;
+    [Header("Transizione")]
+    [SerializeField] private float transitionDuration = 0.35f;
+    [SerializeField] private AnimationCurve transitionCurve = null;
+
+    [Header("Opzioni")]
+    [SerializeField] private bool triggerOnce = false;
+
+    private bool _used;
 
     private void OnTriggerEnter(Collider other)
     {
-        Console.WriteLine("CameraAreaTrigger: OnTriggerEnter");
         if (!other.CompareTag("Player")) return;
+        if (cameraFollow == null) return;
 
-        if (!_hasOriginalStored)
-        {
-            _originalOffset = cameraFollow.CurrentOffset;
-            _originalRotation = cameraFollow.transform.rotation;
-            _hasOriginalStored = true;
-        }
+        if (triggerOnce && _used) return;
+        _used = true;
 
-        cameraFollow.SetOffset(areaOffset);
-
-        cameraFollow.transform.rotation = Quaternion.Euler(areaRotationEuler);
+        cameraFollow.TransitionTo(areaOffset, areaRotationEuler, transitionDuration, transitionCurve);
     }
-
-    private void OnTriggerExit(Collider other)
+    private void OnDrawGizmos()
     {
-        Console.WriteLine("CameraAreaTrigger: OnTriggerExit");
-        if (!other.CompareTag("Player")) return;
-
-        if (_hasOriginalStored)
+        if (!TryGetComponent<BoxCollider>(out BoxCollider boxCollider)) return;
         {
-            cameraFollow.SetOffset(_originalOffset);
-            cameraFollow.transform.rotation = _originalRotation;
+            Matrix4x4 rotationMatrix = Matrix4x4.TRS(boxCollider.transform.position, boxCollider.transform.rotation, boxCollider.transform.lossyScale);
+            Gizmos.matrix = rotationMatrix;
+            Gizmos.DrawWireCube(boxCollider.center, boxCollider.size);
         }
     }
 }

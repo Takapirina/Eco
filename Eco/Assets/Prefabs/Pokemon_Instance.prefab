@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8761619656363204878}
   - component: {fileID: 2405452773984880641}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pokemon_Instance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,6 +32,9 @@ Transform:
   m_Children:
   - {fileID: 1746003094627196907}
   - {fileID: 5328885172358529736}
+  - {fileID: 7584587364708140512}
+  - {fileID: 2014840239574294573}
+  - {fileID: 3494974343086850854}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2405452773984880641
@@ -48,6 +51,77 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonRenderer: {fileID: 3498077094711879848}
   targetIndicator: {fileID: 321068963288634607}
+  FX_Center: {fileID: 2014840239574294573}
+  FX_Head: {fileID: 3494974343086850854}
+  FX_Feet: {fileID: 7584587364708140512}
+  idleFps: 12
+  hitFps: 12
+  koFps: 12
+  enterStyle: 0
+  enterDuration: 0.5
+  enterStartScale: 0.05
+  enterStartYOffset: 1.2
+  enterEase:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  wildShadowStrength: 1
+  wildShadowFadeDuration: 0.25
+  wildShadowEase:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  vfxEnter: {fileID: 0}
+  vfxHealing: {fileID: 3137090282217903132, guid: 5d74e0f91f60b45b1abebb0c3738fd2f, type: 3}
+  durationHealing: 1
+  vfxBoost: {fileID: 1193633153199291053, guid: ccb1a290918ae4fb890aecf53a647bdf, type: 3}
+  durationBoost: 0.7
+  vfxDebuff: {fileID: 8507245199590193242, guid: a08c736aefd224b55baff0008f641d9f, type: 3}
+  durationDebuff: 0.7
+  vfxParalysis: {fileID: 0}
+  vfxSleep: {fileID: 0}
+  vfxBurn: {fileID: 0}
+  vfxPoison: {fileID: 0}
 --- !u!1 &321068963288634607
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5328885172358529736}
   - component: {fileID: 200256971834607548}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: arrow_indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,9 +215,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1746003094627196907}
-  - component: {fileID: 7451517049950726027}
   - component: {fileID: 3498077094711879848}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pokemon_Render
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,20 +238,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8761619656363204878}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7451517049950726027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5169819532939709114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00fadc28c33fa47aeb251982099ccd62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pokemonRenderer: {fileID: 3498077094711879848}
-  targetIndicator: {fileID: 0}
 --- !u!212 &3498077094711879848
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -187,8 +246,8 @@ SpriteRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5169819532939709114}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -199,7 +258,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f28b6a01d8861442eae2192e86be0ba1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -231,3 +290,96 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5238727857362584586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7584587364708140512}
+  m_Layer: 6
+  m_Name: FX_Feet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7584587364708140512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5238727857362584586}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.216, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8761619656363204878}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6171551576885419822
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2014840239574294573}
+  m_Layer: 6
+  m_Name: FX_Center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2014840239574294573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6171551576885419822}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.048, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8761619656363204878}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8570938039570453386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3494974343086850854}
+  m_Layer: 6
+  m_Name: FX_Head
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3494974343086850854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8570938039570453386}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.416, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8761619656363204878}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

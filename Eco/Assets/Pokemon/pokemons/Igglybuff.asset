@@ -184,6 +184,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 430ce836a0b8f456b9d8b444edcbb3e1, type: 3}
   sprites_shiny:
   - {fileID: 21300000, guid: ba3d27f1e8c8a47ed969cf5ed37dbe3f, type: 3}
+  portrait: {fileID: 21300000, guid: 6fc8b5405074b4bc6b48891163527f23, type: 3}
+  portrait_shiny: {fileID: 21300000, guid: c5a7e5cd90ace4bb78a6dd7be38f9508, type: 3}
+  isFly: 0
+  vfxEnter: {fileID: 0}
   base_hp: 90
   base_attack: 30
   base_defense: 15

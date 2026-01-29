@@ -18,10 +18,18 @@ public class BattleUI_info : MonoBehaviour
     private void Rebuild()
     {
         Clear();
+
         foreach (BattleUnit unit in units)
         {
             PokemonInfoCardUI card = Instantiate(pokemonInfoPrefab, container);
-            card.canvasGroup.alpha = Mathf.Clamp01(0.7f);
+            card.canvasGroup.alpha = 0.7f;
+
+            // cache scale iniziali
+            if (card.hpFill != null)
+                card.hpBaseScale = card.hpFill.localScale;
+            if (card.manaFill != null)
+                card.manaBaseScale = card.manaFill.localScale;
+
             spawned.Add(card);
             FillCard(card, unit);
         }
@@ -34,49 +42,83 @@ public class BattleUI_info : MonoBehaviour
             if (spawned[i] != null)
                 Destroy(spawned[i].gameObject);
         }
-
         spawned.Clear();
+    }
+
+    private static float SafeRatio(float current, float max)
+    {
+        if (max <= 0f) return 0f;
+        return Mathf.Clamp01(current / max);
+    }
+
+    // 🔑 SOLO X, basato sullo scale iniziale
+    private void SetBarScaleX(RectTransform bar, Vector3 baseScale, float current, float max)
+    {
+        if (bar == null) return;
+
+        float ratio = SafeRatio(current, max);
+
+        Vector3 s = bar.localScale;
+        s.x = baseScale.x * ratio;
+        bar.localScale = s;
     }
 
     private void FillCard(PokemonInfoCardUI card, BattleUnit unit)
     {
-        var p = unit.Instance;
+        var p = unit?.Instance;
         if (p == null) return;
+
+        card.unit = unit;
 
         card.nameText.text = p.BaseData.name;
         card.level.text = $"Lv {p.Level}";
 
         card.hpText.text = $"{p.CurrentHP}/{p.MaxHP}";
-        card.hpFill.fillAmount = p.CurrentHP / (float)p.MaxHP;
+        SetBarScaleX(card.hpFill, card.hpBaseScale, p.CurrentHP, p.MaxHP);
 
-        if (card.manaFill != null && card.manaText != null)
-        {
-            card.manaText.text = $"{p.CurrentMana}/{p.MaxMana}";
-            card.manaFill.fillAmount = p.CurrentMana / (float)p.MaxMana;
-        }
+        card.manaText.text = $"{p.CurrentMana}/{p.MaxMana}";
+        SetBarScaleX(card.manaFill, card.manaBaseScale, p.CurrentMana, p.MaxMana);
     }
 
-    public void ActiveSelectionCardById(int index, Vector2 offset)
+    // ✅ QUI la modifica runtime (come volevi)
+    public void RefreshCard(BattleUnit unit)
     {
-        if (index < 0 || index >= spawned.Count) return;
+        var card = spawned.Find(c => c != null && c.unit?.Instance != null && c.unit.Instance.id == unit.Instance.id);
+        if (card == null) return;
 
-        RectTransform rt = spawned[index].GetComponent<RectTransform>();
+        var p = unit.Instance;
+
+        card.hpText.text = $"{p.CurrentHP}/{p.MaxHP}";
+        SetBarScaleX(card.hpFill, card.hpBaseScale, p.CurrentHP, p.MaxHP);
+
+        card.manaText.text = $"{p.CurrentMana}/{p.MaxMana}";
+        SetBarScaleX(card.manaFill, card.manaBaseScale, p.CurrentMana, p.MaxMana);
+    }
+
+    // 🔒 METODI LASCIATI IDENTICI (promesso)
+    public void ActiveSelectionCardById(BattleUnit p, Vector2 offset)
+    {
+        PokemonInfoCardUI spawn = spawned.Find(c => c.unit.Instance.id == p.Instance.id);
+        if (!spawn) return;
+
+        RectTransform rt = spawn.GetComponent<RectTransform>();
         if (rt == null) return;
         rt.anchoredPosition += offset;
 
-        var cg = spawned[index].canvasGroup;
+        var cg = spawn.canvasGroup;
         cg.alpha = Mathf.Clamp01(1f);
     }
 
-    public void ResetSelectionCardByIndex(int index, Vector2 offset)
+    public void ResetSelectionCardByIndex(BattleUnit p, Vector2 offset)
     {
-        if (index < 0 || index >= spawned.Count) return;
+        PokemonInfoCardUI spawn = spawned.Find(c => c.unit.Instance.id == p.Instance.id);
+        if (!spawn) return;
 
-        RectTransform rt = spawned[index].GetComponent<RectTransform>();
+        RectTransform rt = spawn.GetComponent<RectTransform>();
         if (rt == null) return;
         rt.anchoredPosition -= offset;
 
-        var cg = spawned[index].canvasGroup;
+        var cg = spawn.canvasGroup;
         cg.alpha = Mathf.Clamp01(0.8f);
     }
 }
